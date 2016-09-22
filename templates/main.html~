@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<HTML>
+  <head>
+    <title>
+      What your job should be!!!
+    </title>
+  </head>
+  <body>
+    <h1>Here are the possible jobs and youre rate of geting them:</h1>
+    {% for job in jobs %}
+    <p> {{ job }} </p>
+    <p>
+      and your job is: {{ message }} </p>
+  </body>
+</HTML>
+
+
+    

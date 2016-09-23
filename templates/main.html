@@ -7,11 +7,23 @@
   </head>
   <body>
     <h1>Here are the possible jobs and your rate of geting them:</h1>
-    <ul>
-    {% for job in jobs %}
-    <li> {{ job }} </li>
-    {% endfor %}
-    </ul>
+    <table>
+      <tr>
+	<th>
+	  JOBS
+	</th>
+	<th>
+	  Chance 
+	</th>
+      </tr>
+	{% for j in jobs %}
+      <tr>
+	<td> {{ j }} </td>
+	<td> {{ jobs[j] }}% </td>
+	
+      </tr>
+      {% endfor %}
+    </table>
     <p>
       and your job is: {{ message }} </p>
   </body>

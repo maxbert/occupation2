@@ -26,7 +26,7 @@ def chooser():
     a = random.randrange(len(choices))
     return(choices[a])
 
-@app.route("/")
+@app.route("/occupations/")
 def hey():
     return render_template('main.html', message = chooser(), jobs = JOBS)
 

@@ -2,7 +2,7 @@ import random
 JOBS = {}
 
 def opener():
-    a = open("occupations.csv", "r")
+    a = open("data/occupations.csv", "r")
     b = a.read().split("\n")
     b = b[1:]
     for i in range(len(b) -2):

@@ -1,35 +1,20 @@
-from flask import Flask, render_template #get the Flask classes methods
-import random
 
-JOBS = {}
+from flask import Flask, render_template #get the Flask classes methods
+from utils import occu
+
 app = Flask(__name__)#constructor
 
-def opener():
-    a = open("occupations.csv", "r")
-    b = a.read().split("\n")
-    b = b[1:]
-    for i in range(len(b) -2):
-        if b[i][0] == "\"":
-            JOBS[b[i].split("\"")[1]] = float(b[i].split("\"")[2][1:])
-        else:    
-            JOBS[b[i].split(",")[0]] = float(b[i].split(",")[1])
-
-opener()
-
-def chooser():
-    choices = []
-    jobs = JOBS.keys()
-    for i in jobs:
-        for j in range(int(JOBS[i] * 10) -1 ):
-            choices.append(i)
-    a = random.randrange(len(choices))
-    return(choices[a])
-
+occu.opener()
 @app.route("/occupations/")
 def hey():
-    return render_template('main.html', message = chooser(), jobs = JOBS)
+    return render_template('main.html', message = occu.chooser(), jobs = occu.JOBS)
+@app.route("/")
+def no():
+    return render_template('hey.html')
 
-
+@app.route("/occupation")
+def yay():
+    return render_template('main.html', message = occu.chooser(), jobs = occu.JOBS)
 if __name__ == "__main__":
     app.debug = True
     app.run()#start webserver
